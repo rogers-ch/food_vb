@@ -1,0 +1,10 @@
+[11-May-2020 21:12:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMeals() in /home/chrogers/public_html/328/food_vb/model/validate.php:30
+Stack trace:
+#0 /home/chrogers/public_html/328/food_vb/model/validate.php(35): validMeal('breakfast')
+#1 {main}
+  thrown in /home/chrogers/public_html/328/food_vb/model/validate.php on line 30
+[11-May-2020 21:13:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function getMeals() in /home/chrogers/public_html/328/food_vb/model/validate.php:30
+Stack trace:
+#0 /home/chrogers/public_html/328/food_vb/model/validate.php(35): validMeal('breakfast')
+#1 {main}
+  thrown in /home/chrogers/public_html/328/food_vb/model/validate.php on line 30
