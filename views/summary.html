@@ -12,10 +12,10 @@
     <h1>Order Summary</h1>
 
     <!-- see below for use of token to insert data from session array (this is a fat-free thing - part of fat-free templating language) -->
-    <p>Thank you for ordering {{ @SESSION.food }} for {{ @SESSION.meal }}.</p>
+    <p>Thank you for ordering {{ @SESSION.order->getFood() }} for {{ @SESSION.order->getMeal() }}.</p>
 
-    <check if="{{ isset(@SESSION.condiments) }}">
-        <p>Condiments: {{ implode(@SESSION.condiments, ", ") }}</p>
+    <check if="{{ !empty(@SESSION.order->getCondiments()) }}">
+        <p>Condiments: {{ implode(@SESSION.order->getCondiments(), ", ") }}</p>
     </check>
 
     <p><a href="order">Place another order</a></p>
