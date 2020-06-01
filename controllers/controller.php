@@ -134,14 +134,20 @@ class Controller
             $_SESSION['condiments'] = $_POST['condiments'];
             */
 
-            //Add the data to the object in the session array
-            $_SESSION['order']->setCondiments($_POST['condiments']);
+            if ($this->_validator->validCondiments($_POST['condiments'])) {
+
+                //Add the data to the object in the session array
+                $_SESSION['order']->setCondiments($_POST['condiments']);
 
 
-            //var_dump($_SESSION['condiments']);
+                //var_dump($_SESSION['condiments']);
 
-            //Redirect to summary page
-            $this->_f3->reroute('summary');
+                //Redirect to summary page
+                $this->_f3->reroute('summary');
+
+            }
+
+
 
 
         }
@@ -160,6 +166,9 @@ class Controller
      */
     public function summary()
     {
+        //Write order to database
+        $GLOBALS['db']->writeOrder($_SESSION['order']);
+
         //echo '<h1>Welcome to my summary</h1>';
 
         $view = new Template();
@@ -168,6 +177,20 @@ class Controller
         session_destroy();   //to make sure we're starting with a blank slate the next time someone comes to place an order
         //any site shared on one domain shares the same session, so it's important to destroy the session when
         // you are done with it so you don't run into old data or data from a different app.
+    }
+
+    public function display()
+    {
+        //echo "<p>Display method</p>";
+        $result = $GLOBALS['db']->getOrders();
+
+        //add result array to hive
+        $this->_f3->set('result', $result);
+
+        $view = new Template();
+        echo $view->render('views/display.html');
+
+        //var_dump($result);
     }
 
 }

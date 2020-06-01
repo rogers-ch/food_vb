@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>Thank You</title>
+
+    <include href="includes/header.htm"></include>
+
+</head>
+<body>
+<div class="container">
+    <h1>Display All Orders</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Order ID</th>
+            <th scope="col">Food</th>
+            <th scope="col">Meal</th>
+            <th scope="col">Condiments</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <repeat group="{{ @result }}" value="{{ @row }}">
+
+            <tr>
+                <th scope="row"> {{ @row['order_id'] }} </th>
+                <td> {{ @row['food'] }} </td>
+                <td> {{ @row['meal'] }} </td>
+                <td> {{ @row['condiments'] }} </td>
+            </tr>
+
+        </repeat>
+
+        </tbody>
+    </table>
+
+    <p><a href="order">Place another order</a></p>
+    <p><a href="{{ @BASE }}">Return to the home page</a></p>
+
+</div>
+
+</body>
+</html>

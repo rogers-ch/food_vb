@@ -31,6 +31,9 @@ $validator = new Validate;
 //Instantiate a Controller object
 $controller = new Controller($f3, $validator);
 
+//Instantiate a Database object
+$db = new Database();
+
 //Define a default route
 $f3->route('GET /', function() {
     $GLOBALS['controller']->home();
@@ -95,6 +98,12 @@ $f3->route('GET /summary', function() {
 
 });
 
+//Display route
+$f3->route('GET /display', function() {
+
+    $GLOBALS['controller']->display();
+
+});
 
 //Run F3
 $f3->run();               // -> to run instance methods

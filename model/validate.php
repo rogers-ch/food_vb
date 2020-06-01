@@ -38,6 +38,27 @@ class Validate
         return in_array($meal, $meals);
     }
 
+    /* Return a value indicating if every value in
+    the $selectedCondiments array is in the list of
+    valid condiments.
+    @param String[] $selectedCondiments
+    @return boolean
+     */
+    function validCondiments($selectedCondiments)
+    {
+        $condiments = getCondiments();
+        //print_r($selectedCondiments);
+        //print_r($condiments);
+
+        //We need to check each condiment in our array
+        foreach ($selectedCondiments as $selected) {
+            if (!in_array($selected, $condiments)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /*
     //for testing purposes only
     echo validMeal("breakfast") ? "yes<br>" : "no<br>";
